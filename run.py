@@ -1,12 +1,13 @@
-from flask import Flask, render_template, flash
-from flask_bootstrap import Bootstrap
-from flask_appconfig import AppConfig
-from flask_wtf import Form, RecaptchaField
-from flask_wtf.file import FileField
-from wtforms import TextField, HiddenField, ValidationError, RadioField,\
-    BooleanField, SubmitField, IntegerField, FormField, validators
+from flask              import Flask, render_template, flash
+from flask_bootstrap    import Bootstrap
+from flask_appconfig    import AppConfig
+from flask_wtf          import Form, RecaptchaField
+from flask_wtf.file     import FileField
+from wtforms            import TextField, HiddenField, ValidationError, RadioField,\
+                        BooleanField, SubmitField, IntegerField, FormField, validators
 from wtforms.validators import Required
-#import RPi.GPIO
+#from GPIO               import open_garage
+
 
 
 """# straight from the wtforms docs:
@@ -76,4 +77,4 @@ def create_app(configfile=None):
     return app
 
 if __name__ == '__main__':
-    create_app().run(debug=True)
+    create_app().run(host='0.0.0.0')
