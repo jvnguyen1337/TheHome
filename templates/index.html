@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<link rel="shortcut icon" href="{{ url_for('static', filename='Home.png')}}">
+<!-- Google AJAX -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="{{
+  url_for('static', filename='jquery.js') }}">\x3C/script>')</script>
+<!-- -->
+<script type=text/javascript>
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
 <head>
 
     <meta charset="utf-8">
@@ -14,8 +22,14 @@
     <!-- Bootstrap Core CSS -->
     <link href="{{ url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
 
+    <!-- Contacts CSS -->
+    <link href="{{ url_for('static', filename='css/contacts.css')}}" rel="stylesheet">
+
     <!-- Custom CSS -->
     <link href="{{ url_for('static', filename='css/scrolling-nav.css')}}" rel="stylesheet">
+
+    <!-- Button CSS -->
+    <link href="{{ url_for('static', filename='css/button.css')}}" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -72,8 +86,33 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1>Weclome!</h1>
-                    <p><strong>Hey I am setting things up.</p>
-                    <a class="btn btn-default page-scroll" href="#about">Click Me to Scroll Down!</a>
+                    <p><strong>[Hey, I am setting things up]</p>
+                    <!--a class="btn btn-default page-scroll" href="#about">Click Me to Scroll Down!</a-->
+
+                    <!-- Send AJAX request to the server... -->
+                    <script type=text/javascript>
+                      $(function() {
+                        $('div#_req').bind('click', function() {
+                          $.getJSON($SCRIPT_ROOT + '/garage', {
+                            ajax_request: $('input[name="ajax_request"]').val(),
+                          }, function(data) {
+                            $("#result").text(data.result);
+                          });
+                          return false;
+                        });
+                      });
+                    </script>
+                    <!--p><input type=text size=5 name=ajax_request>
+                       <span id=result>?</span-->
+                    <!--p><a href=# id=_req>Calculate on the Server Side</a-->
+                    <!-- ...Send AJAX request to the server -->
+
+
+                    <!-- Garage Door Button... -->
+                    <p> <i>Garage Door Button</i></p>
+                    <div href=# id=_req class="box"> <span></span> </div>
+                    <!-- ...Garage Door Button -->
+
                 </div>
             </div>
         </div>
@@ -107,6 +146,65 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1>Contact Section</h1>
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <div class="media">
+                                <a class="pull-left">
+                                    <img class="media-object dp img-circle" src="{{ url_for('static', filename='Abay_avatar.jpg')}}" style="width: 100px;height:100px;">
+                                </a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Abay Bektursun <small>(501) 269-5376 Computer Science, Junior</small></h4>
+                                    <h5>Software Developer Intern at <a href="http://www.centene.com">Centene</a></h5>
+                                    <hr style="margin:8px auto">
+
+                                    <span class="label label-primary"><a href="https://www.facebook.com/abaybektursu" class="link">Facebook</a></span>
+                                    <span class="label label-info"><a href="https://twitter.com/abaybektursun">Twitter</a></span>
+                                    <span class="label label-danger"><a href="https://plus.google.com/+abaybektursun/" class="link">Google</a></span>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Name -->
+                        <div class="col-lg-5">
+                            <div class="media">
+                                <a class="pull-left">
+                                    <img class="media-object dp img-circle" src="{{ url_for('static', filename='instagram.png')}}" style="width: 100px;height:100px;">
+                                </a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">New Resident <small>[phone number] [major], [classification]</small></h4>
+                                    <h5>[Position in] <a href="http://www.google.com">[Organization]</a></h5>
+                                    <hr style="margin:8px auto">
+
+                                    <span class="label label-primary"><a href="https://www.facebook.com/abaybektursu" class="link">Facebook</a></span>
+                                    <span class="label label-info"><a href="https://twitter.com/abaybektursun">Twitter</a></span>
+                                    <span class="label label-danger"><a href="https://plus.google.com/+abaybektursun/" class="link">Google</a></span>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    <!-- Charles Bertram-->
+                        <div class="col-lg-5">
+                            <div class="media">
+                                <a class="pull-left">
+                                    <img class="media-object dp img-circle" src="{{ url_for('static', filename='Charles_Bertram_avatar.jpg')}}" style="width: 100px;height:100px;">
+                                </a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Charles Bertram <small>[phone number] Physics, Senior</small></h4>
+                                    <h5>Member of <a href="https://www.facebook.com/groups/spsatuca/">SPS</a></h5>
+                                    <hr style="margin:8px auto">
+
+                                    <span class="label label-primary"><a href="https://www.facebook.com/charles.bertram.372" class="link">Facebook</a></span>
+                                    <span class="label label-info"><a href="https://twitter.com/">Twitter</a></span>
+                                    <span class="label label-danger"><a href="https://plus.google.com/" class="link">Google</a></span>
+
+
+                                </div>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>
