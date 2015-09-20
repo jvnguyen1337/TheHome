@@ -93,7 +93,7 @@
                     <script type=text/javascript>
                       $(function() {
                         $('div#_req').bind('click', function() {
-                          $.getJSON($SCRIPT_ROOT + '/garage', {
+                          $.getJSON($SCRIPT_ROOT + '/board/12', {
                             ajax_request: $('input[name="ajax_request"]').val(),
                           }, function(data) {
                             $("#result").text(data.result);
@@ -193,7 +193,7 @@
                                     <img class="media-object dp img-circle" src="{{ url_for('static', filename='Charles_Bertram_avatar.jpg')}}" style="width: 100px;height:100px;">
                                 </a>
                                 <div class="media-body">
-                                    <h4 class="media-heading">Charles Bertram <small>[phone number] Physics, Senior</small></h4>
+                                    <h4 class="media-heading">Charles Bertram <small>(561)371-7535 Physics, Senior</small></h4>
                                     <h5>Member of <a href="https://www.facebook.com/groups/spsatuca/">SPS</a></h5>
                                     <hr style="margin:8px auto">
 

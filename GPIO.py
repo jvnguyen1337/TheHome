@@ -5,7 +5,7 @@ GPIO.setmode(GPIO.BOARD)
 
 pinList = [11, 12, 13, 15, 16, 19, 21, 23]
 
-class open_garage:
+class board:
     
     def __init__(self, board_pin):
 
@@ -25,6 +25,8 @@ class open_garage:
                 print "This is port", board_pin
                 time.sleep(SleepTimeL)
                 GPIO.output(board_pin, GPIO.HIGH)
+                # Reset GPIO settings
+                GPIO.cleanup()
 
         # End program cleanly with keyboard
         except KeyboardInterrupt:
@@ -33,5 +35,3 @@ class open_garage:
           # Reset GPIO settings
           GPIO.cleanup()
 
-board_pin = input('board_pin: ')
-open_garage(board_pin)
