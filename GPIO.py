@@ -1,18 +1,13 @@
 import RPi.GPIO as GPIO
 import time
 
-GPIO.setmode(GPIO.BCM)
+GPIO.setmode(GPIO.BOARD)
 
-# init list with pin numbers
-#22 - nothing
-#10 - in7
-#2  - in6
-#pinList = [17, 27, 22, 10, 9]
-pinList = [9, 27, 22, 10, 17, 2, 4, 3]
+pinList = [11, 12, 13, 15, 16, 19, 21, 23]
 
 class open_garage:
     
-    def __init__(self):
+    def __init__(self, board_pin):
 
         # loop through pins and set mode and state to 'low'
         for i in pinList: 
@@ -21,15 +16,15 @@ class open_garage:
 
         # time to sleep between operations in the main loop
 
-        SleepTimeL = 0.1
+        SleepTimeL = 1
 
         # main loop
         #"""
         try:
-                GPIO.output(9, GPIO.LOW)
-                print "This is port", 9
+                GPIO.output(board_pin , GPIO.LOW)
+                print "This is port", board_pin
                 time.sleep(SleepTimeL)
-                GPIO.output(9, GPIO.HIGH)
+                GPIO.output(board_pin, GPIO.HIGH)
 
         # End program cleanly with keyboard
         except KeyboardInterrupt:
@@ -38,3 +33,5 @@ class open_garage:
           # Reset GPIO settings
           GPIO.cleanup()
 
+board_pin = input('board_pin: ')
+open_garage(board_pin)
