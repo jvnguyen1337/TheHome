@@ -38,6 +38,47 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!-- iOS scroll checkbox -->
+    <script src="{{ url_for('static', filename='iphone-style-checkboxes/jquery/iphone-style-checkboxes.js')}}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='iphone-style-checkboxes/style.css')}}"/>
+    <script type="text/javascript">
+        $(document).ready(function() {
+          $(':checkbox').iphoneStyle();
+        });
+    </script>
+
+    <style type="text/css">
+        body {
+          padding: 10px; }
+        th {
+          text-align: right;
+          padding: 4px;
+          padding-right: 15px;
+          vertical-align: top; }
+        .css_sized_container .iPhoneCheckContainer {
+          width: 250px; }
+    </style>
+
+    <script type="text/javascript" charset="utf-8">
+        $(window).load(function() {
+          $('.on_off :checkbox').iphoneStyle();
+          $('.disabled :checkbox').iphoneStyle();
+          $('.css_sized_container :checkbox').iphoneStyle({ resizeContainer: false, resizeHandle: false });
+          $('.long_tiny :checkbox').iphoneStyle({ checkedLabel: 'Very Long Text', uncheckedLabel: 'Tiny' });
+
+          var onchange_checkbox = ($('.onchange :checkbox')).iphoneStyle({
+            onChange: function(elem, value) {
+              $('span#status').html(value.toString());
+            }
+          });
+
+          setInterval(function() {
+            onchange_checkbox.prop('checked', !onchange_checkbox.is(':checked')).iphoneStyle("refresh");
+            return
+          }, 2500);
+        });
+    </script>
+
 </head>
 
 <!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
@@ -123,8 +164,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>About Section</h1>
+                    <h1>Lights</h1>
+                    <!--div href=# id=_req class="myButton">ON</div-->
                 </div>
+
             </div>
         </div>
     </section>
@@ -211,10 +254,10 @@
     </section>
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 
     <!-- Scrolling Nav JavaScript -->
     <script src="{{ url_for('static', filename='js/jquery.easing.min.js') }}"></script>
